@@ -29,7 +29,7 @@ class clock():
                 self.count_hours(self.hours)
             else:
                 break
-    
+    # loop that tracks the number of seconds that have passed. 
     def count_seconds(self,seconds):
        while self.seconds>=0:
            tm.sleep(1)
@@ -37,25 +37,28 @@ class clock():
            timer_label.set("{:02d}:{:02d}:{:02d}".format(self.hours,self.minutes,self.seconds))
            self.seconds -=1
            
-       
+	#loop that tracks the number of minutes that are left. 
     def count_minutes(self,minutes):
         while self.minutes >=0:
             self.seconds=59
             self.count_seconds(self.seconds)
             self.minutes -=1
-    
+    #loop that tracks the number of hours that are left. 
     def count_hours(self,hours):
         while self.hours>=0:
             self.minutes=59
             self.count_minutes(self.minutes)
             self.hours-=1
- 
+
+#takes the entered time and splits it up for the clock class.  
 def start():
     try:
         clock(str(time.get()))
     except ValueError:
         pass
 
+
+#GUI stuff 
 root = Tk()
 root.title('Timer')
     
